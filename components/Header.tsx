@@ -28,16 +28,18 @@ export default function Header() {
           </div>
 
           <div className="flex items-center space-x-2 md:space-x-4">
-            <nav>
-              <Link
-                prefetch={false}
-                href="/my-courses"
-                className="flex space-x-2 items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:border md:border-border md:rounded-md md:px-4 md:py-2"
-              >
-                <BookMarkedIcon className="h-4 w-4" />
-                <span className="hidden md:block">My Courses</span>
-              </Link>
-            </nav>
+            <SignedIn>
+              <nav>
+                <Link
+                  prefetch={false}
+                  href="/my-courses"
+                  className="flex space-x-2 items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors md:border md:border-border md:rounded-md md:px-4 md:py-2"
+                >
+                  <BookMarkedIcon className="h-4 w-4" />
+                  <span className="hidden md:block">My Courses</span>
+                </Link>
+              </nav>
+            </SignedIn>
 
             <DarkModeToggle />
 
