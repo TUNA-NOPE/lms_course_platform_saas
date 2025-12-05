@@ -20,14 +20,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Courselly Platform",
-    template: "%s | Courselly Platform",
+    default: "Open Market Academy",
+    template: "%s | Open Market Academy",
   },
-  description: "Courselly - Your comprehensive learning platform for online courses, interactive content, and skill development. Start your learning journey today.",
-  keywords: ["online learning", "courses", "education", "e-learning", "skill development", "Courselly"],
-  authors: [{ name: "Courselly" }],
-  creator: "Courselly",
-  publisher: "Courselly",
+  description: "Open Market Academy - Your comprehensive learning platform for online courses, interactive content, and skill development. Start your learning journey today.",
+  keywords: ["online learning", "courses", "education", "e-learning", "skill development", "Open Market Academy"],
+  authors: [{ name: "Open Market Academy" }],
+  creator: "Open Market Academy",
+  publisher: "Open Market Academy",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.critters.tech"),
   alternates: {
     canonical: "/",
@@ -36,24 +36,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Courselly Platform",
-    title: "Courselly Platform - Online Learning Made Easy",
-    description: "Courselly - Your comprehensive learning platform for online courses, interactive content, and skill development.",
+    siteName: "Open Market Academy",
+    title: "Open Market Academy - Online Learning Made Easy",
+    description: "Open Market Academy - Your comprehensive learning platform for online courses, interactive content, and skill development.",
     images: [
       {
         url: "/logo.svg",
         width: 1200,
         height: 630,
-        alt: "Courselly Platform",
+        alt: "Open Market Academy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Courselly Platform - Online Learning Made Easy",
-    description: "Courselly - Your comprehensive learning platform for online courses, interactive content, and skill development.",
+    title: "Open Market Academy - Online Learning Made Easy",
+    description: "Open Market Academy - Your comprehensive learning platform for online courses, interactive content, and skill development.",
     images: ["/logo.svg"],
-    creator: "@courselly",
+    creator: "@openmarketacademy",
   },
   robots: {
     index: true,
@@ -81,6 +81,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=auto_stories"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
