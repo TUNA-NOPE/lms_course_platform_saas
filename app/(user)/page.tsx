@@ -12,7 +12,7 @@ export default async function Home() {
       <Hero />
 
       {/* Courses Grid */}
-      <div className="container mx-auto px-4">
+      <div id="courses" className="container mx-auto px-4 scroll-mt-24">
         <div className="flex items-center gap-4 py-8">
           <div className="h-px flex-1 bg-gradient-to-r from-border/0 via-border to-border/0" />
           <span className="text-sm font-medium text-muted-foreground">
