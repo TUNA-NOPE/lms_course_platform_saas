@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import { CourseCard } from "@/components/CourseCard";
-import { getCourses } from "@/public/sanity/lib/courses/getCourses";
+import { getCourses } from "@/sanity/lib/courses/getCourses";
 
 export const revalidate = 0; // Always fetch fresh data
 

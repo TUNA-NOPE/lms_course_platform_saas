@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { urlFor } from "@/public/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 import { Loader } from "@/components/ui/loader";
 import { CourseProgress } from "@/components/CourseProgress";
 import {
