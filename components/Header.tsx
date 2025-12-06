@@ -1,7 +1,7 @@
 "use client";
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { BookMarkedIcon } from "lucide-react";
+import { BookMarkedIcon, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { SearchInput } from "./SearchInput";
 import { Button } from "./ui/button";
@@ -11,17 +11,15 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+        <div className="flex h-16 items-center justify-between gap-2 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <Link
               href="/"
               prefetch={false}
               className="flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0"
             >
               <div className="flex items-center justify-center h-9 w-9 rounded-lg bg-primary/10">
-                <span className="material-symbols-outlined text-primary text-2xl">
-                  auto_stories
-                </span>
+                <BookOpen className="h-5 w-5 text-primary" />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-base font-bold text-foreground">Open Market</span>

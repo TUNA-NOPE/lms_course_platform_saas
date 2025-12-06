@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { SanityLive } from "@/sanity/lib/live";
+import { SanityLive } from "@/public/sanity/lib/live";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export default function UserLayout({
@@ -18,7 +19,8 @@ export default function UserLayout({
       >
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pt-16 md:pt-10">{children}</main>
+          <Footer />
         </div>
       </ThemeProvider>
 

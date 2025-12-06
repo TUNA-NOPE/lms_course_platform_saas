@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
-import getCourseById from "@/sanity/lib/courses/getCourseById";
+import getCourseById from "@/public/sanity/lib/courses/getCourseById";
 import { Sidebar } from "@/components/dashboard/Sidebar";
-import { getCourseProgress } from "@/sanity/lib/lessons/getCourseProgress";
+import { getCourseProgress } from "@/public/sanity/lib/lessons/getCourseProgress";
 import { checkCourseAccess } from "@/lib/auth";
 
 interface CourseLayoutProps {

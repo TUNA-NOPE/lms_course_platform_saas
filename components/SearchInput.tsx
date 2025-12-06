@@ -48,29 +48,22 @@ export function SearchInput() {
 
   return (
     <div className="search-container">
-      {/* Small mobile: Icon only */}
       <button
         type="button"
         onClick={handleToggle}
-        className="sm:hidden p-2 rounded-full hover:bg-secondary/80 transition-colors"
+        className="lg:hidden flex items-center gap-2 p-2 sm:px-4 sm:py-2 rounded-full sm:bg-secondary/80 sm:hover:bg-secondary hover:bg-secondary/80 transition-colors"
         aria-label="Search"
       >
-        {isExpanded ? (
-          <X className="h-5 w-5 text-muted-foreground" />
-        ) : (
-          <Search className="h-5 w-5 text-muted-foreground" />
-        )}
-      </button>
+        <span className="md:hidden">
+          {isExpanded ? (
+            <X className="h-5 w-5 text-muted-foreground" />
+          ) : (
+            <Search className="h-5 w-5 text-muted-foreground" />
+          )}
+        </span>
 
-      {/* Medium screens: Compact "Search" button */}
-      <button
-        type="button"
-        onClick={handleToggle}
-        className="hidden sm:flex lg:hidden items-center gap-2 px-4 py-2 rounded-full bg-secondary/80 hover:bg-secondary transition-colors"
-        aria-label="Search"
-      >
-        <Search className="h-4 w-4 text-muted-foreground" />
-        <span className="text-sm text-muted-foreground">Search</span>
+        <Search className="hidden md:block h-4 w-4 text-muted-foreground" />
+        <span className="hidden md:block text-sm text-muted-foreground">Search</span>
       </button>
 
       {/* Expanded search - full width overlay (for small & medium screens) */}

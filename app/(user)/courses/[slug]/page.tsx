@@ -1,10 +1,10 @@
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/public/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import EnrollButton from "@/components/EnrollButton";
-import getCourseBySlug from "@/sanity/lib/courses/getCourseBySlug";
-import { isEnrolledInCourse } from "@/sanity/lib/student/isEnrolledInCourse";
+import getCourseBySlug from "@/public/sanity/lib/courses/getCourseBySlug";
+import { isEnrolledInCourse } from "@/public/sanity/lib/student/isEnrolledInCourse";
 import { auth } from "@clerk/nextjs/server";
 
 interface CoursePageProps {

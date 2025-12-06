@@ -1,6 +1,6 @@
 "use server";
 
-import { uncompleteLessonById } from "@/sanity/lib/lessons/uncompleteLessonById";
+import { uncompleteLessonById } from "@/public/sanity/lib/lessons/uncompleteLessonById";
 
 export async function uncompleteLessonAction(
   lessonId: string,

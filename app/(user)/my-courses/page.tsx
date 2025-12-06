@@ -1,9 +1,9 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { getEnrolledCourses } from "@/sanity/lib/student/getEnrolledCourses";
+import { getEnrolledCourses } from "@/public/sanity/lib/student/getEnrolledCourses";
 import Link from "next/link";
 import { GraduationCap } from "lucide-react";
-import { getCourseProgress } from "@/sanity/lib/lessons/getCourseProgress";
+import { getCourseProgress } from "@/public/sanity/lib/lessons/getCourseProgress";
 import { CourseCard } from "@/components/CourseCard";
 
 export default async function MyCoursesPage() {
