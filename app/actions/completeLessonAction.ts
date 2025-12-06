@@ -1,6 +1,6 @@
 "use server";
 
-import { completeLessonById } from "@/public/sanity/lib/lessons/completeLessonById";
+import { completeLessonById } from "@/sanity/lib/lessons/completeLessonById";
 
 export async function completeLessonAction(lessonId: string, clerkId: string) {
   try {

@@ -25,14 +25,14 @@ export const enrollmentType = defineType({
       title: "Amount",
       type: "number",
       validation: (rule) => rule.required().min(0),
-      description: "The amount paid for the course enrollment in cents",
+      description: "The amount for the course enrollment (0 for free courses)",
     }),
     defineField({
       name: "paymentId",
-      title: "Payment ID",
+      title: "Enrollment ID",
       type: "string",
       validation: (rule) => rule.required(),
-      description: "The Stripe payment/checkout session ID",
+      description: "The enrollment identifier",
     }),
     defineField({
       name: "enrolledAt",

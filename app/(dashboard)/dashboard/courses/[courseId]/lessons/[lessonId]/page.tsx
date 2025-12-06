@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
-import { getLessonById } from "@/public/sanity/lib/lessons/getLessonById";
+import { getLessonById } from "@/sanity/lib/lessons/getLessonById";
 import { PortableText } from "@portabletext/react";
 import { LoomEmbed } from "@/components/LoomEmbed";
 import { VideoPlayer } from "@/components/VideoPlayer";

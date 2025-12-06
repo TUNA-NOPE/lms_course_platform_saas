@@ -4,7 +4,7 @@
  */
 
 import { validatePreviewUrl } from "@sanity/preview-url-secret";
-import { client } from "@/public/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 import { redirect } from "next/navigation";
 import { draftMode } from "next/headers";
 

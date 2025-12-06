@@ -47,15 +47,6 @@ export function CourseCard({ course, progress, href }: CourseCardProps) {
             <span className="text-sm font-medium px-3 py-1 bg-black/50 text-white rounded-full backdrop-blur-sm">
               {course.category?.name || "Uncategorized"}
             </span>
-            {"price" in course && typeof course.price === "number" && (
-              <span className="text-white font-bold px-3 py-1 bg-black/50 dark:bg-white/20 rounded-full backdrop-blur-sm">
-                {course.price === 0
-                  ? "Free"
-                  : `$${course.price.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                    })}`}
-              </span>
-            )}
           </div>
         </div>
         <div className="p-6 flex flex-col flex-1">

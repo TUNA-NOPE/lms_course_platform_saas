@@ -1,11 +1,13 @@
 "use client";
 
-import { createStripeCheckout } from "@/actions/createStripeCheckout";
+import { enrollInCourse } from "@/actions/createEnrollment";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useTransition, useEffect, useRef } from "react";
+
+const PENDING_ENROLLMENT_KEY = "pendingEnrollmentCourseId";
 
 function EnrollButton({
   courseId,
@@ -17,23 +19,53 @@ function EnrollButton({
   const { user, isLoaded: isUserLoaded } = useUser();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const hasAutoEnrolled = useRef(false);
 
-  const handleEnroll = async (courseId: string) => {
+  const handleEnroll = async (courseId: string, goToDashboard = false) => {
     startTransition(async () => {
       try {
         const userId = user?.id;
         if (!userId) return;
 
-        const { url } = await createStripeCheckout(courseId, userId);
-        if (url) {
-          router.push(url);
+        // Clear pending enrollment from storage
+        sessionStorage.removeItem(PENDING_ENROLLMENT_KEY);
+
+        await enrollInCourse(courseId, userId);
+        
+        // If auto-enrolling after sign-in, go directly to dashboard
+        if (goToDashboard) {
+          router.push(`/dashboard/courses/${courseId}`);
+        } else {
+          router.refresh();
         }
       } catch (error) {
         console.error("Error in handleEnroll:", error);
-        throw new Error("Failed to create checkout session");
+        throw new Error("Failed to enroll in course");
       }
     });
   };
+
+  // Save enrollment intent to sessionStorage
+  const savePendingEnrollment = () => {
+    sessionStorage.setItem(PENDING_ENROLLMENT_KEY, courseId);
+  };
+
+  // Auto-enroll after sign in if there's a pending enrollment for this course
+  useEffect(() => {
+    if (
+      user?.id &&
+      isUserLoaded &&
+      !isEnrolled &&
+      !hasAutoEnrolled.current
+    ) {
+      const pendingCourseId = sessionStorage.getItem(PENDING_ENROLLMENT_KEY);
+      if (pendingCourseId === courseId) {
+        hasAutoEnrolled.current = true;
+        // Pass true to go directly to dashboard after auto-enrollment
+        handleEnroll(courseId, true);
+      }
+    }
+  }, [user?.id, isUserLoaded, isEnrolled, courseId]);
 
   // Show loading state while checking user is loading
   if (!isUserLoaded || isPending) {
@@ -61,13 +93,13 @@ function EnrollButton({
   // Show sign in button for non-authenticated users
   if (!user?.id) {
     return (
-      <SignInButton mode="modal">
-        <button
-          className="w-full rounded-lg px-6 py-3 font-medium transition-all duration-300 ease-in-out relative h-12 bg-white text-black hover:scale-105 hover:shadow-lg hover:shadow-black/10 cursor-pointer"
-        >
-          Sign in to Enroll
-        </button>
-      </SignInButton>
+      <div onMouseDown={savePendingEnrollment}>
+        <SignInButton mode="modal">
+          <button className="w-full rounded-lg px-6 py-3 font-medium transition-all duration-300 ease-in-out relative h-12 bg-white text-black hover:scale-105 hover:shadow-lg hover:shadow-black/10 cursor-pointer">
+            Sign in to Enroll
+          </button>
+        </SignInButton>
+      </div>
     );
   }
 

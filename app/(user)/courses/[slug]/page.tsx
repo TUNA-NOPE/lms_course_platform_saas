@@ -1,10 +1,10 @@
-import { urlFor } from "@/public/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import EnrollButton from "@/components/EnrollButton";
-import getCourseBySlug from "@/public/sanity/lib/courses/getCourseBySlug";
-import { isEnrolledInCourse } from "@/public/sanity/lib/student/isEnrolledInCourse";
+import getCourseBySlug from "@/sanity/lib/courses/getCourseBySlug";
+import { isEnrolledInCourse } from "@/sanity/lib/student/isEnrolledInCourse";
 import { auth } from "@clerk/nextjs/server";
 
 interface CoursePageProps {
@@ -69,9 +69,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:min-w-[300px]">
-              <div className="text-3xl font-bold text-white mb-4">
-                {course.price === 0 ? "Free" : `$${course.price}`}
-              </div>
               <EnrollButton courseId={course._id} isEnrolled={isEnrolled} />
             </div>
           </div>

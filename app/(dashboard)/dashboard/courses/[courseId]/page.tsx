@@ -1,4 +1,4 @@
-import getCourseById from "@/public/sanity/lib/courses/getCourseById";
+import getCourseById from "@/sanity/lib/courses/getCourseById";
 import { redirect } from "next/navigation";
 
 interface CoursePageProps {
